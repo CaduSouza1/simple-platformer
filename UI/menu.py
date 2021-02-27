@@ -1,62 +1,71 @@
 from typing import List
 import pygame
 
-UP = 1
-DOWN = 2
-LEFT = 3
-RIGHT = 4
-
 
 class Button:
     pass
 
 
-class Menu:
+class MenuItem:
     def __init__(self, text: str, font_path: str, font_size: int, x: int, y: int, color: pygame.Color):
         self.text = text
-        self.font = pygame.font.Font(font_path, font_size)
-        self.font_width, self.font_height = self.font.size(text)
-        self.selected = True
         self.color = color
-        self.x = x
-        self.y = y
+        self.font = pygame.font.Font(font_path, font_size)
+        self.width, self.height = self.font.size(text)
+        self.rect = pygame.Rect(x, y, self.width, self.height)
 
     def Draw(self, surface: pygame.Surface):
-        font_rect = pygame.Rect(0, 0, self.font_width, self.font_height)
-        font_rect.center = (self.x, self.y)
-
         font_surface = self.font.render(
             self.text,
             True,
             self.color
         )
 
-        surface.blit(font_surface, (font_rect.x, font_rect.y))
+        surface.blit(font_surface, (self.rect.x, self.rect.y))
+
+    def ShowOptions(self, surface: pygame.Surface):
+        pass
 
     def DrawCursor(self):
         pass
 
 
-class SelectionBar(Menu):
+class SelectionBar(MenuItem):
+    cursor_width = 5
+    cursor_height = 5
     def __init__(self, text: str, font_path: str, font_size: int, x: int, y: int, color: pygame.Color):
         super().__init__(text, font_path, font_size, x, y, color)
 
-    def DrawCursor(self):
-        pass
+    def DrawCursor(self, surface: pygame.Surface):
+        cursor_rect = pygame.Rect(
+            self.rect.x, self.rect.y, self.width + SelectionBar.cursor_width, self.height + SelectionBar.cursor_height
+        )
+        pygame.draw.rect(surface, self.color, cursor_rect, 1)
 
 
 class StartMenu:
-    def __init__(self, menu_itens: List[Menu], shape: tuple, centered=False):
+    UP = 1
+    DOWN = 2
+
+    def __init__(self, menu_itens: List[MenuItem]):
         self.menu_itens = menu_itens
-        self.shape = shape
-        self.centered = centered
+        self.selected_item_index = 0
 
     def Draw(self, surface: pygame.Surface):
         for menu in self.menu_itens:
             menu.Draw(surface)
 
-    def DrawCursor(self):
+    def DrawCursor(self, surface: pygame.Surface):
+        self.menu_itens[self.selected_item_index].DrawCursor(surface)
+
+    def CenterMenu(self, center_x: int, center_y: int):
         pass
 
     def MoveCursor(self, direction: int):
-        pass
+        if direction == StartMenu.UP:
+            if self.selected_item_index > 0:
+                self.selected_item_index -= 1
+
+        elif direction == StartMenu.DOWN:
+            if self.selected_item_index < len(self.menu_itens):
+                self.selected_item_index += 1
