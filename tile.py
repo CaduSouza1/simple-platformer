@@ -2,7 +2,7 @@ import pygame
 
 class Tile(pygame.sprite.Sprite):
     def __init__(self):
-        pygame.sprite.Sprite.__init__()
+        super().__init__()
 
 
 class Tilemap:
