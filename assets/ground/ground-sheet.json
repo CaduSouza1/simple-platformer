@@ -1,0 +1,41 @@
+{
+    "frames": {
+        "dirt-with-rock.png": {
+            "frame": { "x": 0, "y": 0, "w": 8, "h": 8 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 8, "h": 8 },
+            "sourceSize": { "w": 8, "h": 8 }
+        },
+        "grass-with-rock.png": {
+            "frame": { "x": 8, "y": 0, "w": 8, "h": 8 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 8, "h": 8 },
+            "sourceSize": { "w": 8, "h": 8 }
+        },
+        "normal-dirt.png": {
+            "frame": { "x": 16, "y": 0, "w": 8, "h": 8 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 8, "h": 8 },
+            "sourceSize": { "w": 8, "h": 8 }
+        },
+        "normal-grass.png": {
+            "frame": { "x": 24, "y": 0, "w": 8, "h": 8 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 8, "h": 8 },
+            "sourceSize": { "w": 8, "h": 8 }
+        }
+    },
+    "meta": {
+        "app": "https://www.codeandweb.com/texturepacker",
+        "version": "1.0",
+        "image": "ground-sheet.png",
+        "format": "RGBA8888",
+        "size": { "w": 32, "h": 8 },
+        "scale": "1",
+        "smartupdate": "$TexturePacker:SmartUpdate:8924610c8ed999c2e756017940e7d73d:929a32e5520024985c7b5e73f5397ec6:e0cf2c53b9d213b00fdf93f26a6a5331$"
+    }
+}
